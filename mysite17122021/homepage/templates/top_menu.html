@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'homepage/css/styles.css' %}">
+  
+  <title>{{title}}</title>
+</head>
+<body>
+  {% block top_menu %}
+  <div class="top-menu">
+    <ul> 
+      {% for m in top_menu %}
+      
+      {% if m == 'home' %}
+      <li><a href="{% url 'home' %}">{{m}}</a></li>
+      {% else %}
+      <li><a href="/{{m}}">{{m}}</a></li>
+      {% endif %}
+      
+      {% endfor %}
+    </ul>
+  </div>
+  {% endblock top_menu %}
+
+  {% block content %}{% endblock%}
+  
+
+
+ 
+</body>
+</html>
