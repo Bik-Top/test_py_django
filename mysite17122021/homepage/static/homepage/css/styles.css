@@ -19,3 +19,21 @@ html, body {
   text-decoration: none;
   font-size: 1em;
 }
+
+.border-bottom {
+  border-bottom: 1px solid #ccc;
+}
+.cars-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cars-list li {
+  padding: 5px;
+}
+.cars-list li a{
+  padding: 5px;
+  margin-bottom: 2px;
+  background-color: aqua;
+}
+

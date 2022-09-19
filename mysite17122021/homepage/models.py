@@ -1,22 +1,29 @@
 # from os import times, times_result
 from django.db import models
+from django.utils import timezone
 from django.urls import reverse
 
 # Create your models here.
 class Car(models.Model):
-  brend = models.CharField(max_length=50)
-  color = models.CharField(max_length=50)
-  content = models.TextField(blank=True)
-  photo = models.ImageField(upload_to="photos/%Y/%m/%d/")
-  times_create = models.DateTimeField(auto_now_add=True)
-  times_update = models.DateTimeField(auto_now=True)
-  is_published = models.BooleanField(default=True)
+  brend = models.CharField(max_length=50, verbose_name='Бренд')
+  color = models.CharField(max_length=50, verbose_name="Цвет")
+  content = models.TextField(blank=True, verbose_name="Описание")
+  photo = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name="Логотип")
+  times_create = models.DateTimeField(auto_now_add=True, verbose_name="Создание запист")
+  times_update = models.DateTimeField(auto_now=True, verbose_name="Обновление записи")
+  is_published = models.BooleanField(default=True, verbose_name="Опубликованно")
 
   def __str__(self):
     return self.brend
 
   def get_absolute_url(self):
     return reverse('car', kwargs={'carid': self.pk})
+
+
+  class Meta:
+    verbose_name = 'Машина'
+    verbose_name_plural = 'Машины'
+    ordering = ['-times_create']
 
 # python manage.py shell
 

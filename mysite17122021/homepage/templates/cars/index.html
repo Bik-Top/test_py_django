@@ -1,19 +1,20 @@
-<h1>cars</h1>
-<a href="/">home</a>
+{% extends 'top_menu.html' %} {% block content %}
 
-<div> 
-  <a href="/car/34/">car/34</a>
-</div>
-<div> 
-  <a href="?name=Mersedes&type=sidan">car/GET</a>
-</div>
+<ul class="cars-list">
+  {% for car in cars %}
 
-<hr>
-<ul>
-{% for car in cars %}
+  <!-- <li>1 <a href="{% url 'car' car.pk %}">{{car.brend}}</a></li> -->
 
- <!-- <li>1 <a href="{% url 'car' car.pk %}">{{car.brend}}</a></li> -->
+  <li> 
+    <div class='border-bottom'>
+      <img src="{{car.photo}}">
+      <p>{{car.content}}</p>
+      <p><i>{{ car.times_create |date:'Y-m-d H:i:s' }}</i></p>
+      <a href="{{ car.get_absolute_url }}">more</a>
 
-<li>  <a href="{{ car.get_absolute_url }}">{{car.brend}}</a></li>
-{% endfor %}
+    </div> 
+  </li>
+  {% endfor %}
 </ul>
+
+{% endblock%}

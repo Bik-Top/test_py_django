@@ -11,13 +11,14 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'about/index.html', {'title': 'about'})
+    return render(request, 'about/index.html', {'top_menu': top_menu, 'title': 'about'})
 
 
 def cars(request):
-  cars= Car.objects.all()  
-  return render(request, 'cars/index.html', {'cars':cars})
+  #cars= Car.objects.order_by('-times_create')
+  cars= Car.objects.all()
+  return render(request, 'cars/index.html', {'top_menu': top_menu,'cars':cars, 'title': 'cars'})
 
 def show_car(request, carid):
-  car= Car.objects.get(pk=carid)   
-  return render(request, 'show_car/index.html', {'car': car})
+  car= Car.objects.get(pk=carid)
+  return render(request, 'show_car/index.html', {'top_menu': top_menu, 'car': car})

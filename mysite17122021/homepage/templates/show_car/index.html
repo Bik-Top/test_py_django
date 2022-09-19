@@ -1,4 +1,10 @@
+{% extends 'top_menu.html' %}
 
-<h1>{{ car.brend }}</h1>
+{% block content %}
+
+<h1>{{title}}</h1>
+<h3>{{ car.brend }}</h3>
 <h4>{{ car.color }}</h4>
 <div>{{ car.content }}</div>
+
+{% endblock%}
